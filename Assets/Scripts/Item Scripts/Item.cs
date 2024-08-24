@@ -11,7 +11,7 @@
         public Color Color;
         public ItemCategory Category;
         public string Type;
-        public string Material;
+        public Material Material;
 
         public SpriteRenderer SR;
 
@@ -24,10 +24,10 @@
 
         }
 
-        public virtual void Initialize(string name, Color color, ItemCategory category, string material, string type = "")
+        public virtual void Initialize(string name, Material material, ItemCategory category, string type = "")
         {
             Name = name;
-            Color = color;
+            Color = Materials.GetMaterialColor(material);
             Category = category;
             Material = material;
             Type = type;

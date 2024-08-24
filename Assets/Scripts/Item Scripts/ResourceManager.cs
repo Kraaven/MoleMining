@@ -114,18 +114,21 @@ public class ResourceManager : MonoBehaviour
             switch (Random.Range(0,3))
             {
                 case 0:
-                    T = "REC";
+                    T = "Octagon";
                     break;
                 case 1:
-                    T = "ROMB";
+                    T = "Princess";
                     break;
                 case 2:
-                    T = "DIA";
+                    T = "Brilliant";
                     break;
             }
             var TT = IT.AddComponent<Item>();
-            TT.Initialize("TEST",new Color(Random.Range(0,1f),Random.Range(0,1f),Random.Range(0,1f)),ItemCategory.Gem,"",T);
-            yield return new WaitForSeconds(0.5f);
+            
+            Material[] values = (Material[])System.Enum.GetValues(typeof(Material));
+            Material randomMaterial = values[Random.Range(0, values.Length)];
+            TT.Initialize("TEST",randomMaterial,ItemCategory.Gem,T);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
