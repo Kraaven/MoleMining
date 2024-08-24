@@ -7,10 +7,10 @@ public enum ItemType
 {
     Crystal,
     Gem,
-    BaseRing,
-    BaseNecklace,
-    CraftComponent,
-    CompletedWork
+    Metal,
+    Ring,
+    Necklace,
+    CraftingTool
 }
 
 [Serializable]

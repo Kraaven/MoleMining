@@ -151,16 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc0ff574889274c45919183f410b09f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CrystalVarients: []
-  Colors: []
-  GemCuts:
-  - name: Diamond
-    ItemSprite: {fileID: 1786065395, guid: b728855e53c43bc40be1cf9992f3d963, type: 3}
+  crystalVariants: []
+  gemCuts:
+  - name: Cone
+    ItemSprite: {fileID: 1786065395, guid: 0e1f4acdb54640e47abbfdb641b41d94, type: 3}
   - name: Romb
-    ItemSprite: {fileID: -833799081, guid: b728855e53c43bc40be1cf9992f3d963, type: 3}
+    ItemSprite: {fileID: -833799081, guid: 0e1f4acdb54640e47abbfdb641b41d94, type: 3}
   - name: Rec
-    ItemSprite: {fileID: -148534402, guid: b728855e53c43bc40be1cf9992f3d963, type: 3}
-  Rings: []
+    ItemSprite: {fileID: -148534402, guid: 0e1f4acdb54640e47abbfdb641b41d94, type: 3}
+  metals: []
+  rings: []
+  necklaces: []
 --- !u!4 &415883818
 Transform:
   m_ObjectHideFlags: 0
@@ -490,7 +491,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1786065395, guid: b728855e53c43bc40be1cf9992f3d963, type: 3}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -528,8 +529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ea3def3258614499ed4ca5685b97f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GemType: Romb
-  gemcolor: {r: 0, g: 0, b: 0, a: 0}
+  GEMTYPE: {r: 1, g: 0, b: 0, a: 1}
+  NAME: asda
+  CUT: Rec
 --- !u!1 &1556605269
 GameObject:
   m_ObjectHideFlags: 0
