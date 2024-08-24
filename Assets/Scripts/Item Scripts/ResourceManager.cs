@@ -2,7 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.U2D;
+using Random = UnityEngine.Random;
+
 public class ResourceManager : MonoBehaviour
 {
     public static ResourceManager Instance { get; private set; }
@@ -67,5 +70,25 @@ public class ResourceManager : MonoBehaviour
         return null;
     }
 
-    
+    private void Start()
+    {
+        for (int i = -2; i < 3; i++)
+        {
+            var IT = new GameObject();
+            string T = "";
+            switch (Random.Range(0,3))
+            {
+                case 0:
+                    T = "REC";
+                    break;
+                case 1:
+                    T = "ROMB";
+                    break;
+                case 2:
+                    T = "DIA";
+                    break;
+            }
+            IT.AddComponent<Item>().Initialize("TEST",new Color(Random.Range(0,255),Random.Range(0,255),Random.Range(0,255)),ItemCategory.Gem,"",T);
+        }
+    }
 }

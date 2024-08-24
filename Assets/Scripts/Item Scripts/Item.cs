@@ -12,16 +12,12 @@
         public string Type;
         public string Material;
 
-        protected SpriteRenderer SR;
+        public SpriteRenderer SR;
 
         protected virtual void Start()
         {
-            SR = GetComponent<SpriteRenderer>();
-            
-            print(SR);
+            SR = gameObject.AddComponent<SpriteRenderer>();
             gameObject.AddComponent<GravityComponent>();
-            
-            Initialize(Name, Color,Category,Material,Type );
         }
 
         public virtual void Initialize(string name, Color color, ItemCategory category, string material, string type = "")
