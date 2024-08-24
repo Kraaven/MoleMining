@@ -29,6 +29,7 @@ public class ItemInfo
     public ItemCategory Category;
     public string ObjectType;
     public Color ItemMaterial;
+    public ItemInfo Attached;
 
     public ItemInfo(Item PickedUpitem)
     {
