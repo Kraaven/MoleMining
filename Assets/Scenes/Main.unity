@@ -122,6 +122,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &415883816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 415883818}
+  - component: {fileID: 415883817}
+  m_Layer: 0
+  m_Name: ResourceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &415883817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415883816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc0ff574889274c45919183f410b09f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CrystalVarients: []
+  Colors: []
+  GemCuts:
+  - name: Diamond
+    ItemSprite: {fileID: 1786065395, guid: b728855e53c43bc40be1cf9992f3d963, type: 3}
+  - name: Romb
+    ItemSprite: {fileID: -833799081, guid: b728855e53c43bc40be1cf9992f3d963, type: 3}
+  - name: Rec
+    ItemSprite: {fileID: -148534402, guid: b728855e53c43bc40be1cf9992f3d963, type: 3}
+  Rings: []
+--- !u!4 &415883818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415883816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.523267, y: 0.5337269, z: -0.057521854}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,7 +409,7 @@ GameObject:
   - component: {fileID: 1363765135}
   m_Layer: 6
   m_Name: Item
-  m_TagString: Untagged
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -471,9 +525,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1363765130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c26dd677053173499f275d1c3ceb65f, type: 3}
+  m_Script: {fileID: 11500000, guid: d3ea3def3258614499ed4ca5685b97f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GemType: Romb
+  gemcolor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1556605269
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,3 +668,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1556605271}
   - {fileID: 1363765134}
+  - {fileID: 415883818}
