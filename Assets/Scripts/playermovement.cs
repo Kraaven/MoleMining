@@ -24,8 +24,6 @@ public class playermovement : MonoBehaviour
 
     private bool isFlipped = false;
 
-    public Animator anim;
-
     public float climbSpeed = 5f;  // Speed of climbing
     private bool isClimbing = false; 
     // Start is called before the first frame update
@@ -41,16 +39,10 @@ public class playermovement : MonoBehaviour
         if (_movedirection.x == 1 && !isFlipped)
         {
             Flip();
-            anim.SetInteger("walking",(int) _movedirection.x);
         }
-        else if (_movedirection.x == -1 && isFlipped)
+        else if(_movedirection.x == -1 && isFlipped)
         {
             Flip();
-            anim.SetInteger("walking",(int) _movedirection.x);
-        }
-        else
-        {
-            anim.SetInteger("walking",(int) _movedirection.x);
         }
         
         transform.Translate(new Vector2(_movedirection.x * moveSpeed * Time.deltaTime,0f));
@@ -74,19 +66,17 @@ public class playermovement : MonoBehaviour
             // Handle vertical movement on the ladder
             transform.Translate(new Vector2(0, _movedirection.y * climbSpeed * Time.deltaTime));
             gravityScale = 0f;  // Disable gravity while climbing
-            anim.SetBool("climbing",true);
         }
         else
         {
             gravityScale = 9.8f;  // Restore gravity when not climbing
-            anim.SetBool("climbing",false);
         }
     }
     void jumpandgravity()
     {
         origin = new Vector2(transform.position.x, transform.position.y - originminus);
         // Check if the object is grounded using Raycast
-        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, 0.4f, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, 0.1f, groundLayer);
         isGrounded = hit.collider != null;
 
         if (isGrounded)
@@ -97,11 +87,6 @@ public class playermovement : MonoBehaviour
             if (Input.GetButtonDown("Jump") && gravityScale == 9.8f)
             {
                 verticalVelocity = jumpForce;
-                anim.SetBool("grounded",false);
-            }
-            else
-            {
-                anim.SetBool("grounded",true);
             }
         }
         else
