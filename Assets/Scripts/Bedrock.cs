@@ -7,58 +7,48 @@ using UnityEngine.UIElements;
 public class Bedrock : MonoBehaviour
 {
     public Tilemap terrainTilemap;
-    public TileBase[] Dirt;
-    public TileBase[] Ores;
 
-    public int worldWidth = 1000;
-    public int worldHeight = 250;
-    public float scale = 0.1f;
-    public float noiseFreq = 0.05f;
-    public float seed;
-    public float oreChance = 0.1f;
-    public Texture2D noiseTexture;
-
-    public Sprite tile;
-    public int WSize = 100;
+    public TileBase[] backgroundTiles;  // Array of tile options
+    public Tilemap backgroundTilemap;  // Reference to the background Tilemap
+    public int width = 100;            // Width of the Tilemap
+    public int height = 100;           // Height of the Tilemap
+    public float noiseScale = 0.1f;    // Scale of noise for background variation
 
 
 
 
     private void Start()
     {
-        seed = Random.Range(-1000, 1000);
-        GenerateNoiseTexture();
-        GenerateBedrock();
 
-        /*        GenerateTerrain();*/
+        GenerateBackground();
     }
+
 
     //Make caves and ground
-    public void GenerateBedrock()
-    {
-        for (int x = 0; x < WSize; x++)
+
+        void GenerateBackground()
         {
-
-            for (int y = 0; y < WSize; y++)
+            for (int x = 0; x < width; x++)
             {
-                if (noiseTexture.GetPixel(x, y).r < 0.6)
+                for (int y = 0; y < height; y++)
                 {
-                    if (Random.value < oreChance)
-                    {
-                        terrainTilemap.SetTile(new Vector3Int(x-40, y-40, 0), Ores[Random.Range(0, 2)]);
-                    }
-                    else
-                    {
-                        terrainTilemap.SetTile(new Vector3Int(x - 40, y - 40, 0), Dirt[Random.Range(0, 3)]);
-                    }
-                    
-                }
+                    Vector3Int tilePosition = new Vector3Int(x-40, y-20, 0);
+                    float noise = Mathf.PerlinNoise(x * noiseScale, y * noiseScale);
 
+                    // Select a tile based on noise value
+                    int tileIndex = Mathf.FloorToInt(noise * (backgroundTiles.Length - 1));
+                    tileIndex= Mathf.Clamp(tileIndex, 0, backgroundTiles.Length - 1);
+
+                    TileBase selectedTile = backgroundTiles[tileIndex];
+                    
+
+                    backgroundTilemap.SetTile(tilePosition, selectedTile);
+                }
             }
         }
-    }
+
     //make noise map
-    private void GenerateNoiseTexture()
+/*    private void GenerateNoiseTexture()
     {
         noiseTexture = new Texture2D(worldWidth, worldHeight);
 
@@ -71,42 +61,8 @@ public class Bedrock : MonoBehaviour
                 noiseTexture.SetPixel(x, y, new Color(v, v, v));
             }
         }
-        noiseTexture.Apply();
+        noiseTexture.Apply();*/
 
     }
 
-    /*    void GenerateTerrain()
-        {
-            float[] heightMap = GenerateNoiseMap(worldWidth);
-
-            for (int x = 0; x < worldHeight; x++)
-            {
-                int groundHeight = Mathf.RoundToInt(Mathf.PerlinNoise(x * scale, 0) * worldWidth / 2);
-
-                for (int y = 0; y < worldWidth; y++)
-                {
-                    if (y < groundHeight)
-                    {
-                        terrainTilemap.SetTile(new Vector3Int(x, y, 0), stoneTile);
-                    }
-                    else if (y == groundHeight)
-                    {
-                        terrainTilemap.SetTile(new Vector3Int(x, y, 0), dirtTile);
-                    }
-                }
-            }
-        }
-    */
-    /*    float[] GenerateNoiseMap(int width)
-        {
-            float[] noiseMap = new float[width];
-            for(int x=0;x< width; x++)
-            {
-                float sampleX = x * scale;
-                float noiseValue = Mathf.PerlinNoise(sampleX, 0f);
-                noiseMap[x] = noiseValue*worldHeight/2;
-            }
-            return noiseMap;
-        }*/
-
-}
+   
