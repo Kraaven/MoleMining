@@ -24,6 +24,7 @@ public class GravityComponent : MonoBehaviour
         if (DownRay.collider != null && DownRay.collider.CompareTag("Ground"))
         {
             transform.position = DownRay.point + new Vector2(0,0.8f);
+            gameObject.AddComponent<BobbingComponent>();
             Destroy(this);
         }
         else

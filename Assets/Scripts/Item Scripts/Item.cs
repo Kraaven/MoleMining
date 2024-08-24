@@ -1,3 +1,4 @@
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using UnityEngine;
@@ -16,8 +17,11 @@
 
         protected virtual void Start()
         {
-            SR = gameObject.AddComponent<SpriteRenderer>();
-            gameObject.AddComponent<GravityComponent>();
+            gameObject.AddComponent<GravityComponent>(); 
+            gameObject.AddComponent<CircleCollider2D>().radius = 0.08f;
+            
+   
+
         }
 
         public virtual void Initialize(string name, Color color, ItemCategory category, string material, string type = "")
@@ -33,7 +37,17 @@
 
         protected virtual void UpdateAppearance()
         {
+            SR = gameObject.AddComponent<SpriteRenderer>();
+            
             SR.sprite = ResourceManager.Instance.GetSprite(Category, Type);
             SR.color = Color;
+        }
+
+        private void Update()
+        {
+            if (transform.position.y < -100)
+            {
+                Destroy(gameObject);
+            }
         }
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using UnityEngine.U2D;
@@ -72,9 +73,43 @@ public class ResourceManager : MonoBehaviour
 
     private void Start()
     {
-        for (int i = -2; i < 3; i++)
+        // for (int i = -2; i < 3; i++)
+        // {
+        //     var IT = new GameObject();
+        //     IT.transform.Translate(new Vector3(i*2,4,0));
+        //     IT.transform.localScale *= 10;
+        //     IT.layer = LayerMask.NameToLayer("Item");
+        //     string T = "";
+        //     switch (Random.Range(0,3))
+        //     {
+        //         case 0:
+        //             T = "REC";
+        //             break;
+        //         case 1:
+        //             T = "ROMB";
+        //             break;
+        //         case 2:
+        //             T = "DIA";
+        //             break;
+        //     }
+        //     var TT = IT.AddComponent<Item>();
+        //     TT.Initialize("TEST",new Color(Random.Range(0,1f),Random.Range(0,1f),Random.Range(0,1f)),ItemCategory.Gem,"",T);
+        //     
+        // }
+        StartCoroutine(Spawn());
+    }
+
+
+    IEnumerator Spawn()
+    {
+        yield return null;
+        yield return null;
+        for (int i = 0; i < 50 ;i++)
         {
             var IT = new GameObject();
+            IT.transform.Translate(new Vector3(Random.Range(-6f,6f),4,0));
+            IT.transform.localScale *= 10;
+            IT.layer = LayerMask.NameToLayer("Item");
             string T = "";
             switch (Random.Range(0,3))
             {
@@ -88,7 +123,9 @@ public class ResourceManager : MonoBehaviour
                     T = "DIA";
                     break;
             }
-            IT.AddComponent<Item>().Initialize("TEST",new Color(Random.Range(0,255),Random.Range(0,255),Random.Range(0,255)),ItemCategory.Gem,"",T);
+            var TT = IT.AddComponent<Item>();
+            TT.Initialize("TEST",new Color(Random.Range(0,1f),Random.Range(0,1f),Random.Range(0,1f)),ItemCategory.Gem,"",T);
+            yield return new WaitForSeconds(0.5f);
         }
     }
 }
