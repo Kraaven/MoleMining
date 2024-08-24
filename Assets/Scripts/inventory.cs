@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class inventory : MonoBehaviour
             pm.enabled = false;
 
         }
-        else if(Input.GetKeyDown(KeyCode.E) && isinvOpen)
+        else if (Input.GetKeyDown(KeyCode.E) && isinvOpen)
         {
             inv.SetActive(false);
             isinvOpen = false;
@@ -33,3 +34,20 @@ public class inventory : MonoBehaviour
         }
     }
 }
+
+public class invList : MonoBehaviour
+{
+    public List<ItemInfo> inventoryList = new List<ItemInfo>();
+    public GameObject player;
+    private void Update()
+    {
+        var T = new Item();
+        inventoryList.Add(new ItemInfo(T));
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        
+    }
+}
+
