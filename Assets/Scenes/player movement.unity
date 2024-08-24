@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 1126935487}
   - component: {fileID: 1126935486}
   - component: {fileID: 1126935485}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -439,9 +439,9 @@ GameObject:
   - component: {fileID: 2014635844}
   - component: {fileID: 2014635848}
   - component: {fileID: 2014635845}
-  - component: {fileID: 2014635847}
   - component: {fileID: 2014635846}
   - component: {fileID: 2014635849}
+  - component: {fileID: 2014635850}
   m_Layer: 0
   m_Name: Mole
   m_TagString: Untagged
@@ -507,38 +507,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e436e982498c73d468ff5e5aba610ea4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 2014635847}
+  rb: {fileID: 0}
+  gravityScale: 9.8
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
   moveSpeed: 5
   _movedirection: {x: 0, y: 0}
   move: {fileID: 849778806278444611, guid: a45d64e1e45ea794e9e208a2f92dfb96, type: 3}
   jump: {fileID: 0}
---- !u!50 &2014635847
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014635843}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 9.8
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &2014635848
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -626,6 +603,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!50 &2014635850
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2014635843}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

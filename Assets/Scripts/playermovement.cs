@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class playermovement : MonoBehaviour
 {
     public Rigidbody2D rb;
-
     public float moveSpeed;
 
     public Vector2 _movedirection;
@@ -37,7 +36,7 @@ public class playermovement : MonoBehaviour
             Flip();
         }
         
-        transform.Translate(new Vector2(_movedirection.x * moveSpeed * Time.deltaTime,_movedirection.y * moveSpeed * Time.deltaTime));
+        transform.Translate(new Vector2(_movedirection.x * moveSpeed * Time.deltaTime,0f));
     }
     
     void Flip()
@@ -47,6 +46,7 @@ public class playermovement : MonoBehaviour
         localScale.x *= -1; // Flip horizontally
         transform.localScale = localScale;
     }
+    
 
 
 }
