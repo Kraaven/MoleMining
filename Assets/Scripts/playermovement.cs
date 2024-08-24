@@ -25,6 +25,7 @@ public class playermovement : MonoBehaviour
     private bool isFlipped = false;
 
     public Animator anim;
+    
 
     public float climbSpeed = 5f;  // Speed of climbing
     private bool isClimbing = false; 
@@ -57,6 +58,16 @@ public class playermovement : MonoBehaviour
         
         jumpandgravity();
         ladderclimb();
+
+        if (isGrounded && Input.GetMouseButton(0))
+        {
+            anim.SetBool("onclick",true);
+        }
+        else
+        {
+            anim.SetBool("onclick",false);
+            anim.SetInteger("walking",(int) _movedirection.x);
+        }
     }
     
     void Flip()
