@@ -3,21 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ItemType
-{
-    Crystal,
-    Gem,
-    Metal,
-    Ring,
-    Necklace,
-    CraftingTool
-}
 
-[Serializable]
-public class ItemEntry
+public enum ItemCategory
 {
-    public string name;
-    public Sprite ItemSprite;
+    Ore,
+    Metal,
+    Gem,
+    EmptyPiece
 }
 
 public class Materials

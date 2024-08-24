@@ -4,18 +4,40 @@
     using UnityEngine.Serialization;
     
 
-    public abstract class Item : MonoBehaviour
+    public class Item : MonoBehaviour
     {
-        public ItemType Type { get; protected set; }
-        public string Name { get; protected set; }
-        public Color Color { get; protected set; }
+        public string Name;
+        public Color Color;
+        public ItemCategory Category;
+        public string Type;
+        public string Material;
+
         protected SpriteRenderer SR;
 
-        protected virtual void Awake()
+        protected virtual void Start()
         {
             SR = GetComponent<SpriteRenderer>();
+            
+            print(SR);
             gameObject.AddComponent<GravityComponent>();
+            
+            Initialize(Name, Color,Category,Material,Type );
         }
 
-        public abstract void Initialize(string name, Color color);
+        public virtual void Initialize(string name, Color color, ItemCategory category, string material, string type = "")
+        {
+            Name = name;
+            Color = color;
+            Category = category;
+            Material = material;
+            Type = type;
+
+            UpdateAppearance();
+        }
+
+        protected virtual void UpdateAppearance()
+        {
+            SR.sprite = ResourceManager.Instance.GetSprite(Category, Type);
+            SR.color = Color;
+        }
     }

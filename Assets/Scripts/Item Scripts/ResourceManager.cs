@@ -20,27 +20,52 @@ public class ResourceManager : MonoBehaviour
         }
     }
 
-    [SerializeField] private List<ItemEntry> crystalVariants;
-    [SerializeField] private List<ItemEntry> gemCuts;
-    [SerializeField] private List<ItemEntry> metals;
-    [SerializeField] private List<ItemEntry> rings;
-    [SerializeField] private List<ItemEntry> necklaces;
-
-    public Sprite GetCrystalSprite(string name) => GetSprite(crystalVariants, name);
-    public Sprite GetGemSprite(string name) => GetSprite(gemCuts, name);
-    public Sprite GetMetalSprite(string name) => GetSprite(metals, name);
-    public Sprite GetRingSprite(string name) => GetSprite(rings, name);
-    public Sprite GetNecklaceSprite(string name) => GetSprite(necklaces, name);
-
-    private Sprite GetSprite(List<ItemEntry> list, string name)
+    [System.Serializable]
+    private class ItemEntry
     {
-        var entry = list.Find(e => e.name == name);
+        public string type;
+        public Sprite sprite;
+    }
+
+    [SerializeField] private List<ItemEntry> ores;
+    [SerializeField] private List<ItemEntry> metals;
+    [SerializeField] private List<ItemEntry> gems;
+    [SerializeField] private List<ItemEntry> emptyPieces;
+
+    public Sprite GetSprite(ItemCategory category, string type = "")
+    {
+        List<ItemEntry> list = GetListForCategory(category);
+        return FindSprite(list, type);
+    }
+    
+
+    private List<ItemEntry> GetListForCategory(ItemCategory category)
+    {
+        switch (category)
+        {
+            case ItemCategory.Ore:
+                return ores;
+            case ItemCategory.Metal:
+                return metals;
+            case ItemCategory.Gem:
+                return gems;
+            case ItemCategory.EmptyPiece:
+                return emptyPieces;
+            default:
+                Debug.LogError($"Unknown category: {category}");
+                return null;
+        }
+    }
+
+    private Sprite FindSprite(List<ItemEntry> list, string type)
+    {
+        var entry = list.Find(e => e.type == type);
         if (entry != null)
-            return entry.ItemSprite;
+            return entry.sprite;
         
-        Debug.LogWarning($"Sprite not found: {name}");
+        Debug.LogWarning($"Sprite not found for type: {type}");
         return null;
     }
 
-    public List<Item> Items;
+    
 }
