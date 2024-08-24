@@ -70,4 +70,41 @@ public class InventoryController : MonoBehaviour
        Singleton.SlotSelected.localPosition = Vector3.zero;
        Singleton.SlotSelected.GetComponent<Image>().enabled = true;
     }
+    
+    public static bool DeleteItem(int slotID)
+    {
+        if (slotID < 0 || slotID >= Singleton.SampleItemList.Count)
+        {
+            print("Invalid slot ID");
+            return false;
+        }
+
+        // Get the item in the slot
+        RectTransform itemToDelete = Singleton.SampleItemList[slotID];
+
+        if (itemToDelete != null)
+        {
+            // Remove from the list
+            Singleton.SampleItemList.RemoveAt(slotID);
+
+            // Destroy the item gameObject
+            Destroy(itemToDelete.gameObject);
+
+            // Optionally, update the remaining items to adjust their slots
+            for (int i = slotID; i < Singleton.SampleItemList.Count; i++)
+            {
+                Singleton.SampleItemList[i].GetComponent<InventoryItem>().InventorySlot = i;
+                Singleton.SampleItemList[i].SetParent(Singleton.InvetorySlots[i]);
+                Singleton.SampleItemList[i].localPosition = Vector3.zero;
+            }
+
+            print("Item deleted");
+            return true;
+        }
+        else
+        {
+            print("No item found in the specified slot");
+            return false;
+        }
+    }
 }

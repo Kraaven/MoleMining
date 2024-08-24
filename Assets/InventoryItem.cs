@@ -28,11 +28,22 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler,IPointerExitHan
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        
+        
+
         ClickDetector.SetLabel("");
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        InventoryController.HighLightSlot(InventorySlot);
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            InventoryController.HighLightSlot(InventorySlot);
+        }
+        else if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            InventoryController.DeleteItem(InventorySlot);
+        }
+
     }
 }
