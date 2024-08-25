@@ -61,7 +61,7 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Custom method to handle double-click event
     private void OnDoubleClick()
     {
-        if (IsInInventory)
+        if (IsInInventory && InteractiveCrafts.OpenMenu)
         {
             var added = InteractiveCrafts.Singleton.Menu.TakeItem(InventorySlot);
             

@@ -186,13 +186,11 @@ public class playermovement : MonoBehaviour
 
         if (other.CompareTag("Smith"))
         {
-            smithTableUI.SetActive(true);
-            inventoryUI.SetActive(true);
+            InteractiveCrafts.FocusFurnace();
         }
         else if (other.CompareTag("polish"))
         {
-            polishTableUI.SetActive(true);
-            inventoryUI.SetActive(true);
+            InteractiveCrafts.FocusPolish();
         }
     }
 
@@ -205,13 +203,12 @@ public class playermovement : MonoBehaviour
         }
         if (other.CompareTag("Smith"))
         {
-            smithTableUI.SetActive(false);
-            inventoryUI.SetActive(false);
+            InteractiveCrafts.ClearFocus();
         }
         else if (other.CompareTag("polish"))
         {
-            polishTableUI.SetActive(false);
-            inventoryUI.SetActive(false);
+            InteractiveCrafts.ClearFocus();
         }
+
     }
 }
