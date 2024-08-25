@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Smelting : MonoBehaviour, InteractiveMenu
 {
@@ -10,6 +11,7 @@ public class Smelting : MonoBehaviour, InteractiveMenu
     public RectTransform ResultHolder; // Slot where the polished item will appear
     public InventoryItem InputItem; // The item currently being polished
     public bool HoldingItem; // Whether an item is currently held for polishing
+    public TMP_Text ButtonLabel;
 
     [Header("Smelting Objects")]
     public GameObject Fire1;
@@ -18,22 +20,22 @@ public class Smelting : MonoBehaviour, InteractiveMenu
 
     public int Fuel = 3;
 
-    // Method to take an item from the inventory and place it in the polishing station
-
     private void Start()
     {
-        Fuel = 0;
+        Fuel = 3; // Start with all fires active
 
-        Fire1.SetActive(false);
-        Fire2.SetActive(false);
-        Fire3.SetActive(false);
+        Fire1.SetActive(true);
+        Fire2.SetActive(true);
+        Fire3.SetActive(true);
+
+        UpdateButtonLabel();
     }
 
     public bool TakeItem(int ID)
     {
         if (HoldingItem)
         {
-            Debug.LogWarning("Already holding an item for polishing.");
+            Debug.LogWarning("Already holding an item for smelting.");
             return false;
         }
         
@@ -53,7 +55,7 @@ public class Smelting : MonoBehaviour, InteractiveMenu
 
             InputItem = item;
             HoldingItem = true;
-            Debug.Log("Item placed in polishing station.");
+            Debug.Log("Item placed in smelting station.");
             return true;
         }
 
@@ -84,6 +86,12 @@ public class Smelting : MonoBehaviour, InteractiveMenu
 
     public void StartSmelting()
     {
+        if (Fuel <= 0)
+        {
+            Refuel();
+            return;
+        }
+
         Material IngotMat;
         switch (InputItem.ItemInformation.ObjectType)
         {
@@ -101,21 +109,19 @@ public class Smelting : MonoBehaviour, InteractiveMenu
                 break;
         }
         
-        
         SmeltOre(IngotMat);
     }
-
 
     private void SmeltOre(Material Metal)
     {
         print($"Smelting {Metal}");
         if (InputItem == null || !HoldingItem)
         {
-            Debug.LogWarning("No item to polish.");
+            Debug.LogWarning("No item to smelt.");
             return;
         }
         
-        // Create the polished gem with the specified cut type
+        // Create the smelted ingot
         ItemInfo SmeltedIngot = new ItemInfo(ItemCategory.Metal, "Ingot", Metal);
         
         var MajorSprite = ResourceManager.Instance.GetSprite(SmeltedIngot.Category, SmeltedIngot.ObjectType);
@@ -131,7 +137,48 @@ public class Smelting : MonoBehaviour, InteractiveMenu
         
         Destroy(InputItem.gameObject);
         HoldingItem = false;
-        
+
+        Fuel--;
+        UpdateFires();
+        UpdateButtonLabel();
     }
-    
+
+    private void UpdateFires()
+    {
+        Fire1.SetActive(Fuel > 0);
+        Fire2.SetActive(Fuel > 1);
+        Fire3.SetActive(Fuel > 2);
+    }
+
+    private void UpdateButtonLabel()
+    {
+        if (Fuel <= 0)
+        {
+            ButtonLabel.text = "Refuel";
+        }
+        else
+        {
+            ButtonLabel.text = "Smelt";
+        }
+    }
+
+    private void Refuel()
+    {
+        // Look for coal in the inventory
+        for (int i = 0; i < InventoryController.Singleton.SampleItemList.Count; i++)
+        {
+            var item = InventoryController.Singleton.SampleItemList[i].GetComponent<InventoryItem>();
+            if (item != null && item.ItemInformation.ObjectType.Equals("Coal"))
+            {
+                InventoryController.DeleteItem(i); // Delete coal from inventory
+                Fuel = 3; // Restore fuel
+                UpdateFires();
+                UpdateButtonLabel();
+                Debug.Log("Refueled with coal.");
+                return;
+            }
+        }
+        
+        Debug.LogWarning("No coal available for refueling.");
+    }
 }

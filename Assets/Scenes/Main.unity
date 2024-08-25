@@ -2870,6 +2870,7 @@ MonoBehaviour:
   ResultHolder: {fileID: 1734982497}
   InputItem: {fileID: 0}
   HoldingItem: 0
+  ButtonLabel: {fileID: 240811074}
   Fire1: {fileID: 569963738}
   Fire2: {fileID: 455087939}
   Fire3: {fileID: 214696722}
