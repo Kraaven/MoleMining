@@ -11,7 +11,7 @@ public class mainmenuScript : MonoBehaviour
 // This method loads the game scene, replace "GameScene" with your actual scene name
     public void PlayGame()
     {
-        SceneManager.LoadScene("Player movement");
+        SceneManager.LoadScene("Home");
     }
 
     // This method can be expanded to open a settings menu
