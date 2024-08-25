@@ -521,7 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 644516424}
   m_Layer: 5
-  m_Name: about section
+  m_Name: how to play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -696,7 +696,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40, y: -0}
+  m_AnchoredPosition: {x: 40, y: 0}
   m_SizeDelta: {x: 40, y: 40}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &856884900
@@ -1401,7 +1401,7 @@ GameObject:
   - component: {fileID: 1426606540}
   - component: {fileID: 1426606539}
   m_Layer: 5
-  m_Name: about para
+  m_Name: ' how to play para'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1848,7 +1848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: About
+  m_text: How To Play
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ceeaaa1e780e853499d54e81c8ad3de7, type: 2}
   m_sharedMaterial: {fileID: 620991221903456175, guid: ceeaaa1e780e853499d54e81c8ad3de7, type: 2}
@@ -1875,13 +1875,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52.35
+  m_fontSize: 39.1
   m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -2192,8 +2192,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000013351, y: 148}
-  m_SizeDelta: {x: 162.8563, y: 52.3899}
+  m_AnchoredPosition: {x: 1.4591, y: 147}
+  m_SizeDelta: {x: 240.0509, y: 77.3173}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1598816853
 MonoBehaviour:
