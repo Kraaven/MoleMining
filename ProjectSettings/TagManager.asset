@@ -6,6 +6,9 @@ TagManager:
   tags:
   - ladder
   - Button
+  - Ground
+  - polish
+  - Smith
   layers:
   - Default
   - TransparentFX

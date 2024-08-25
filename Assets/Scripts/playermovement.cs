@@ -33,7 +33,12 @@ public class playermovement : MonoBehaviour
     
 
     public float climbSpeed = 5f;  // Speed of climbing
-    private bool isClimbing = false; 
+    private bool isClimbing = false;
+
+    public GameObject smithTableUI;
+    public GameObject polishTableUI;
+
+    public GameObject inventoryUI;
     // Start is called before the first frame update
     void Start()
     {
@@ -178,6 +183,17 @@ public class playermovement : MonoBehaviour
                 print("Item Not Picked Up");
             }
         }
+
+        if (other.CompareTag("Smith"))
+        {
+            smithTableUI.SetActive(true);
+            inventoryUI.SetActive(true);
+        }
+        else if (other.CompareTag("polish"))
+        {
+            polishTableUI.SetActive(true);
+            inventoryUI.SetActive(true);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -186,6 +202,16 @@ public class playermovement : MonoBehaviour
         {
             isClimbing = false;  // Stop climbing when exiting the ladder trigger
             gravityScale = 9.8f;  // Restore gravity just in case
+        }
+        if (other.CompareTag("Smith"))
+        {
+            smithTableUI.SetActive(false);
+            inventoryUI.SetActive(false);
+        }
+        else if (other.CompareTag("polish"))
+        {
+            polishTableUI.SetActive(false);
+            inventoryUI.SetActive(false);
         }
     }
 }
