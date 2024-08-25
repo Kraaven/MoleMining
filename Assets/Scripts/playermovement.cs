@@ -26,6 +26,9 @@ public class playermovement : MonoBehaviour
 
     public Animator anim;
     
+    private Vector2 lastSafePosition; // To store the player's last safe position
+    public string triggerTag = "Ground"; // Tag for the trigger zone (e.g., a pitfall)
+    
 
     public float climbSpeed = 5f;  // Speed of climbing
     private bool isClimbing = false; 
@@ -33,6 +36,7 @@ public class playermovement : MonoBehaviour
     void Start()
     {
         moleSprite = GetComponent<SpriteRenderer>();
+        lastSafePosition = transform.position;
     }
 
     // Update is called once per frame
@@ -68,6 +72,11 @@ public class playermovement : MonoBehaviour
             anim.SetBool("onclick",false);
             anim.SetInteger("walking",(int) _movedirection.x);
         }
+        
+        if (isGrounded)
+        {
+            lastSafePosition = transform.position;
+        }
     }
     
     void Flip()
@@ -83,45 +92,65 @@ public class playermovement : MonoBehaviour
         if (isClimbing)
         {
             // Handle vertical movement on the ladder
+            
             transform.Translate(new Vector2(0, _movedirection.y * climbSpeed * Time.deltaTime));
-            gravityScale = 0f;  // Disable gravity while climbing
+            gravityScale = 0f;
+            jumpForce = 0f;// Disable gravity while climbing
             anim.SetBool("climbing",true);
         }
         else
         {
-            gravityScale = 9.8f;  // Restore gravity when not climbing
+            gravityScale = 9.8f; // Restore gravity when not climbing
+            jumpForce = 5f;
             anim.SetBool("climbing",false);
         }
     }
     void jumpandgravity()
     {
-        origin = new Vector2(transform.position.x, transform.position.y - originminus);
-        // Check if the object is grounded using Raycast
-        RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.down, 0.4f, groundLayer);
-        isGrounded = hit.collider != null;
+        // Set the origin point slightly below the player for ground detection
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y - originminus);
+
+        // Raycast downward to check if the player is grounded
+        RaycastHit2D groundHit = Physics2D.Raycast(origin, Vector2.down, 0.4f, groundLayer);
+        isGrounded = groundHit.collider != null;
+
+        // Raycast to check for horizontal collisions (left and right)
+        RaycastHit2D leftHit = Physics2D.Raycast(transform.position, Vector2.left, 0.4f, groundLayer);
+        RaycastHit2D rightHit = Physics2D.Raycast(transform.position, Vector2.right, 0.4f, groundLayer);
+
+        bool isBlockedLeft = leftHit.collider != null;
+        bool isBlockedRight = rightHit.collider != null;
 
         if (isGrounded)
         {
-            // If grounded, reset vertical velocity and check for jump input
+            // If grounded, reset vertical velocity and handle jump input
             verticalVelocity = 0f;
+            anim.SetBool("grounded", true);
 
             if (Input.GetButtonDown("Jump") && gravityScale == 9.8f)
             {
                 verticalVelocity = jumpForce;
-                anim.SetBool("grounded",false);
-            }
-            else
-            {
-                anim.SetBool("grounded",true);
+                anim.SetBool("grounded", false);
             }
         }
         else
         {
             // Apply gravity if not grounded
             verticalVelocity -= gravityScale * Time.deltaTime;
+            anim.SetBool("grounded", false);
+        }
+        
+        if ((isBlockedLeft && _movedirection.x < 0) || (isBlockedRight && _movedirection.x > 0))
+        {
+            // If there is a horizontal collision, prevent movement in that direction
+            moveSpeed = 0;
+        }
+        else
+        {
+            moveSpeed = 5;
         }
 
-        // Apply vertical movement
+        // Apply movement (horizontal and vertical)
         transform.position += new Vector3(0, verticalVelocity * Time.deltaTime, 0);
     }
     
@@ -130,6 +159,12 @@ public class playermovement : MonoBehaviour
         if (other.CompareTag("ladder"))
         {
             isClimbing = true;  // Start climbing when entering the ladder trigger
+        }
+        // Check if the player enters the trigger zone
+        if (other.CompareTag(triggerTag))
+        {
+            // Move the player back to the last safe position
+            transform.position = lastSafePosition;
         }
     }
 
@@ -140,11 +175,5 @@ public class playermovement : MonoBehaviour
             isClimbing = false;  // Stop climbing when exiting the ladder trigger
             gravityScale = 9.8f;  // Restore gravity just in case
         }
-        //
-        // if (other.CompareTag("ITEM"))
-        // {
-        //     GetComponent<invList>().inventoryList.Add(new ItemInfo(other.gameObject.GetComponent<Item>()));
-        //     Destroy(other.gameObject);
-        // }
     }
 }
