@@ -26,7 +26,7 @@ public class interact : MonoBehaviour
             if (hit.collider != null)
             {
                 // If an interactable object is clicked, call its Interact method
-                hit.collider.GetComponent<Interactable>()?.Interact();
+                //hit.collider.GetComponent<Interactable>()?.Interact();
             }
         }
     }
