@@ -113,54 +113,74 @@ public class playermovement : MonoBehaviour
             anim.SetBool("climbing",false);
         }
     }
-    void jumpandgravity()
+void jumpandgravity()
+{
+    // Set the origin point slightly below the player for ground detection
+    Vector2 origin = new Vector2(transform.position.x, transform.position.y - originminus);
+
+    // Raycast downward to check if the player is grounded
+    RaycastHit2D groundHit = Physics2D.Raycast(origin, Vector2.down, 0.4f, groundLayer);
+    isGrounded = groundHit.collider != null;
+
+    // Raycast to check for horizontal collisions (left and right)
+    RaycastHit2D leftHit = Physics2D.Raycast(transform.position, Vector2.left, 0.4f, groundLayer);
+    RaycastHit2D rightHit = Physics2D.Raycast(transform.position, Vector2.right, 0.4f, groundLayer);
+
+    // Raycast to check for vertical collisions (above and below)
+    RaycastHit2D topHit = Physics2D.Raycast(transform.position, Vector2.up, 0.4f, groundLayer);
+    RaycastHit2D bottomHit = Physics2D.Raycast(transform.position, Vector2.down, 0.4f, groundLayer);
+
+    bool isBlockedLeft = leftHit.collider != null;
+    bool isBlockedRight = rightHit.collider != null;
+    bool isBlockedAbove = topHit.collider != null;
+    bool isBlockedBelow = bottomHit.collider != null && !isGrounded;
+
+    if (isGrounded)
     {
-        // Set the origin point slightly below the player for ground detection
-        Vector2 origin = new Vector2(transform.position.x, transform.position.y - originminus);
+        // If grounded, reset vertical velocity and handle jump input
+        verticalVelocity = 0f;
+        anim.SetBool("grounded", true);
 
-        // Raycast downward to check if the player is grounded
-        RaycastHit2D groundHit = Physics2D.Raycast(origin, Vector2.down, 0.4f, groundLayer);
-        isGrounded = groundHit.collider != null;
-
-        // Raycast to check for horizontal collisions (left and right)
-        RaycastHit2D leftHit = Physics2D.Raycast(transform.position, Vector2.left, 0.4f, groundLayer);
-        RaycastHit2D rightHit = Physics2D.Raycast(transform.position, Vector2.right, 0.4f, groundLayer);
-
-        bool isBlockedLeft = leftHit.collider != null;
-        bool isBlockedRight = rightHit.collider != null;
-
-        if (isGrounded)
+        if (Input.GetButtonDown("Jump") && gravityScale == 9.8f)
         {
-            // If grounded, reset vertical velocity and handle jump input
-            verticalVelocity = 0f;
-            anim.SetBool("grounded", true);
-
-            if (Input.GetButtonDown("Jump") && gravityScale == 9.8f)
-            {
-                verticalVelocity = jumpForce;
-                anim.SetBool("grounded", false);
-            }
-        }
-        else
-        {
-            // Apply gravity if not grounded
-            verticalVelocity -= gravityScale * Time.deltaTime;
+            verticalVelocity = jumpForce;
             anim.SetBool("grounded", false);
         }
-        
-        if ((isBlockedLeft && _movedirection.x < 0) || (isBlockedRight && _movedirection.x > 0))
+    }
+    else
+    {
+        // Apply gravity if not grounded
+        verticalVelocity -= gravityScale * Time.deltaTime;
+
+        // Prevent the player from moving through ceilings
+        if (isBlockedAbove && verticalVelocity > 0)
         {
-            // If there is a horizontal collision, prevent movement in that direction
-            moveSpeed = 0;
-        }
-        else
-        {
-            moveSpeed = 5;
+            verticalVelocity = 0;
         }
 
-        // Apply movement (horizontal and vertical)
-        transform.position += new Vector3(0, verticalVelocity * Time.deltaTime, 0);
+        anim.SetBool("grounded", false);
     }
+    
+    // Horizontal collision check
+    if ((isBlockedLeft && _movedirection.x < 0) || (isBlockedRight && _movedirection.x > 0))
+    {
+        // If there is a horizontal collision, prevent movement in that direction
+        moveSpeed = 0;
+    }
+    else
+    {
+        moveSpeed = 5;
+    }
+
+    // Prevent the player from getting stuck on the ground
+    if (isBlockedBelow && verticalVelocity < 0)
+    {
+        verticalVelocity = 0;
+    }
+
+    // Apply movement (horizontal and vertical)
+    transform.position += new Vector3(0, verticalVelocity * Time.deltaTime, 0);
+}
     
     private void OnTriggerEnter2D(Collider2D other)
     {
