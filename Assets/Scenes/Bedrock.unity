@@ -107841,14 +107841,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522516493}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 56, y: 80, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 872995516}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &794931320
 GameObject:
   m_ObjectHideFlags: 0
@@ -108180,24 +108180,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 77564ceb856a9dd4ab493583ae9309a0, type: 2}
   - {fileID: 11400000, guid: 5bc5ef74fb665af49a9a4f96138d266b, type: 2}
   - {fileID: 11400000, guid: 16e6d77793acb2e42a00def1e979054f, type: 2}
-  width: 100
+  width: 300
   height: 100
-  noiseScale: 0.1
+  noiseScale: 5
   caveThreshold: 0.4
   caveScale: 0.1
   ores:
   - tile: {fileID: 11400000, guid: 7af692a042b5057479b67f10bf7acb51, type: 2}
-    baseRarity: 100
-    rarityDecay: 0
+    spawnChance: 0
+    minDepth: 0
+    maxDepth: 100
   - tile: {fileID: 11400000, guid: 77564ceb856a9dd4ab493583ae9309a0, type: 2}
-    baseRarity: 100
-    rarityDecay: 1
+    spawnChance: 0.2
+    minDepth: 5
+    maxDepth: 55
   - tile: {fileID: 11400000, guid: 5bc5ef74fb665af49a9a4f96138d266b, type: 2}
-    baseRarity: 50
-    rarityDecay: 0.5
+    spawnChance: 0.15
+    minDepth: 25
+    maxDepth: 100
   - tile: {fileID: 11400000, guid: 16e6d77793acb2e42a00def1e979054f, type: 2}
-    baseRarity: 50
-    rarityDecay: 1
+    spawnChance: 0.07
+    minDepth: 90
+    maxDepth: 100
+  defaultTile: {fileID: 11400000, guid: 7af692a042b5057479b67f10bf7acb51, type: 2}
 --- !u!4 &1297668956
 Transform:
   m_ObjectHideFlags: 0
