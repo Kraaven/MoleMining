@@ -85,7 +85,7 @@ public class ResourceManager : MonoBehaviour
         // TT.Initialize("TEST",randomMaterial,ItemCategory.Crystal,"Crystal1");
         
         
-        StartCoroutine(Spawn());
+        //StartCoroutine(Spawn());
     }
 
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GravityComponent : MonoBehaviour
 {
-    private float Gravity = 1;
+    /*private float Gravity = 1;
     private RaycastHit2D DownRay;
     
     // Layer mask to ignore the current game object's layer
@@ -15,22 +15,31 @@ public class GravityComponent : MonoBehaviour
         // Set the layer mask to ignore the layer this game object is on
         IgnoreLayerMask = LayerMask.NameToLayer("Item");
         IgnoreLayerMask = ~(1 << gameObject.layer);
+
+        gameObject.AddComponent<BoxCollider2D>();
+        gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
+        
+
+
     }
 
     public void Update()
     {
-        DownRay = Physics2D.Raycast(transform.position, Vector2.down, 0.8f, IgnoreLayerMask);
+            *//*transform.Translate(Vector3.down * (Gravity * Time.deltaTime));
+            Gravity *= 1.01f;*//*
+    }*/
 
-        if (DownRay.collider != null && DownRay.collider.CompareTag("Ground"))
+
+
+    /*private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Ground"))
         {
-            transform.position = DownRay.point + new Vector2(0,0.8f);
+
             gameObject.AddComponent<BobbingComponent>();
+            Destroy(gameObject.GetComponent<BoxCollider2D>());
+            gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
             Destroy(this);
         }
-        else
-        {
-            transform.Translate(Vector3.down * (Gravity * Time.deltaTime));
-            Gravity *= 1.01f;
-        }
-    }
+    }*/
 }

@@ -17,10 +17,11 @@
 
         protected virtual void Start()
         {
-            gameObject.AddComponent<GravityComponent>(); 
+            //gameObject.AddComponent<GravityComponent>(); 
             gameObject.AddComponent<CircleCollider2D>().radius = 0.08f;
             gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
-            gameObject.AddComponent<Rigidbody2D>().isKinematic = true;
+            gameObject.AddComponent<Rigidbody2D>();
+            gameObject.AddComponent<BoxCollider2D>();
 
 
 
