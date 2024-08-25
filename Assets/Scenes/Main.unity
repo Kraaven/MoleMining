@@ -713,7 +713,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1556605270
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1396,6 +1396,22 @@ PrefabInstance:
     - target: {fileID: 5876233658570495854, guid: 2a5f21c1e3bb77345bd5dd23c9f5372c, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300995187860429216, guid: 2a5f21c1e3bb77345bd5dd23c9f5372c, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300995187860429216, guid: 2a5f21c1e3bb77345bd5dd23c9f5372c, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300995187860429216, guid: 2a5f21c1e3bb77345bd5dd23c9f5372c, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300995187860429216, guid: 2a5f21c1e3bb77345bd5dd23c9f5372c, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 7665413951814565977, guid: 2a5f21c1e3bb77345bd5dd23c9f5372c, type: 3}
       propertyPath: m_AnchorMax.y
