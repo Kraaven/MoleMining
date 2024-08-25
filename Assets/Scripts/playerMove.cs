@@ -64,26 +64,23 @@ public class TileInteraction : MonoBehaviour
 
         if (clickedTile != null)
         {
-            if (clickedTile.name == "Dirt")
-            {
-                Debug.Log("Dirt" + cellPosition);
-            }
-            else if (clickedTile.name == "Dirt2")
-            {
-                Debug.Log("Dirt2" + cellPosition);
-            }
-            else if (clickedTile.name == "Stone")
+            if (clickedTile.name == "Stone")
             {
                 Debug.Log("Stone" + cellPosition);
             }
-            else if (clickedTile.name == "Gem")
+            else if (clickedTile.name == "Coal")
             {
-                Debug.Log("Gem" + cellPosition);
+                Debug.Log("Coal" + cellPosition);
             }
-            else if (clickedTile.name == "Bubbles" + cellPosition)
+            else if (clickedTile.name == "Silver")
             {
-                Debug.Log("Bubbles" + cellPosition);
+                Debug.Log("Silver" + cellPosition);
             }
+            else if (clickedTile.name == "Gold")
+            {
+                Debug.Log("Gold" + cellPosition);
+            }
+
         }
     }
 

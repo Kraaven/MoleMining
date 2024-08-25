@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -32,7 +32,7 @@ public class Background : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                Vector3Int tilePosition = new Vector3Int(x - 40, y - 20, 0);
+                Vector3Int tilePosition = new Vector3Int(x+100 , y , 0);
                 float noise = Mathf.PerlinNoise(x * noiseScale, y * noiseScale);
 
                 // Select a tile based on noise value
@@ -47,3 +47,4 @@ public class Background : MonoBehaviour
         }
     }
 }
+*/
