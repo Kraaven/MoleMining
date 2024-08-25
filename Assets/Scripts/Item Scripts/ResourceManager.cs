@@ -34,7 +34,7 @@ public class ResourceManager : MonoBehaviour
     [SerializeField] private List<ItemEntry> ores;
     [SerializeField] private List<ItemEntry> metals;
     [SerializeField] private List<ItemEntry> gems;
-    [SerializeField] private List<ItemEntry> emptyPieces;
+    [SerializeField] private List<ItemEntry> Crystals;
 
     public Sprite GetSprite(ItemCategory category, string type = "")
     {
@@ -53,8 +53,8 @@ public class ResourceManager : MonoBehaviour
                 return metals;
             case ItemCategory.Gem:
                 return gems;
-            case ItemCategory.EmptyPiece:
-                return emptyPieces;
+            case ItemCategory.Crystal:
+                return Crystals;
             default:
                 Debug.LogError($"Unknown category: {category}");
                 return null;
@@ -96,6 +96,18 @@ public class ResourceManager : MonoBehaviour
         //     TT.Initialize("TEST",new Color(Random.Range(0,1f),Random.Range(0,1f),Random.Range(0,1f)),ItemCategory.Gem,"",T);
         //     
         // }
+        
+        var IT = new GameObject();
+        IT.transform.position = Vector3.zero;
+        IT.transform.localScale *= 10;
+        IT.layer = LayerMask.NameToLayer("Item");
+        
+        var TT = IT.AddComponent<Item>();
+        Material[] values = (Material[])System.Enum.GetValues(typeof(Material));
+        Material randomMaterial = values[Random.Range(0, values.Length)];
+        TT.Initialize("TEST",randomMaterial,ItemCategory.Crystal,"Crystal1");
+        
+        
         StartCoroutine(Spawn());
     }
 
@@ -104,14 +116,14 @@ public class ResourceManager : MonoBehaviour
     {
         yield return null;
         yield return null;
-        for (int i = 0; i < 50 ;i++)
+        for (int i = 0; i < 10 ;i++)
         {
             var IT = new GameObject();
             IT.transform.Translate(new Vector3(Random.Range(-6f,6f),4,0));
             IT.transform.localScale *= 10;
             IT.layer = LayerMask.NameToLayer("Item");
             string T = "";
-            switch (Random.Range(0,3))
+            switch (Random.Range(0,7))
             {
                 case 0:
                     T = "Octagon";
@@ -122,12 +134,24 @@ public class ResourceManager : MonoBehaviour
                 case 2:
                     T = "Brilliant";
                     break;
+                case 3:
+                    T = "Pear";
+                    break;
+                case 4:
+                    T = "Teardrop";
+                    break;
+                case 5:
+                    T = "Round";
+                    break;
+                case 6:
+                    T = "Heart";
+                    break;
             }
             var TT = IT.AddComponent<Item>();
             
             Material[] values = (Material[])System.Enum.GetValues(typeof(Material));
             Material randomMaterial = values[Random.Range(0, values.Length)];
-            TT.Initialize("TEST",randomMaterial,ItemCategory.Gem,T);
+            TT.Initialize("TEST",randomMaterial,ItemCategory.Crystal,"Crystal1");
             yield return new WaitForSeconds(0.1f);
         }
     }

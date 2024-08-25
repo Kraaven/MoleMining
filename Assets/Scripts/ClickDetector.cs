@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ public class ClickDetector : MonoBehaviour
                 var Added =_inventoryController.Insert(new ItemInfo(IT));
                 if (Added)
                 {
+                    _inventoryController.SampleItemList.Last().GetComponent<InventoryItem>().IsInInventory = true;
                     Destroy(IT.gameObject);
                 }
                 else

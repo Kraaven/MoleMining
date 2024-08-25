@@ -366,11 +366,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 52369741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 378.16107, y: 207.69383}
-  m_SizeDelta: {x: 41.804, y: 41.804}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -40, y: -40}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &322531765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -694,11 +694,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 52369741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -382.67206, y: 207.69383}
-  m_SizeDelta: {x: 41.804, y: 41.804}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 40, y: -0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &856884900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,11 +1346,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 52369741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -382.67206, y: -201.9855}
-  m_SizeDelta: {x: 41.804, y: 41.804}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1260946432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1957,11 +1957,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 52369741}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 378.16095, y: -201.9855}
-  m_SizeDelta: {x: 41.804, y: 41.804}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 40}
+  m_SizeDelta: {x: 41.804016, y: 40}
+  m_Pivot: {x: 1, y: 0}
 --- !u!114 &1534283642
 MonoBehaviour:
   m_ObjectHideFlags: 0

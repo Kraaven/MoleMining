@@ -11,7 +11,7 @@ public enum ItemCategory
     Ore,
     Metal,
     Gem,
-    EmptyPiece
+    Crystal
 }
 
 public class Materials
@@ -31,6 +31,16 @@ public class Materials
                 return FromHex("FC5A96");
             case Material.Peridot:
                 return FromHex("B4C424");
+            case Material.Garnet:
+                return FromHex("b9252b");
+            case Material.Amber:
+                return FromHex("f7901a");
+            case Material.Blue_Sapphire:
+                return FromHex("1e2094");
+            case Material.Diamond:
+                return FromHex("1e2094");
+            
+            
             default:
                 Debug.Log("Default Color");
                 return new Color(0, 0, 0);
@@ -67,8 +77,13 @@ public enum Material
 {
     Silver,
     Gold,
+    Platinum,
     Peridot,
     Amethyst,
+    Garnet,
+    Amber,
+    Diamond,
+    Blue_Sapphire,
     Pink_Tormaline
 }
 
@@ -87,6 +102,21 @@ public class ItemInfo
         ObjectType = PickedUpitem.Type;
         ItemMaterial = PickedUpitem.Material;
 
+        switch (Category)
+        {
+            case ItemCategory.Gem:
+                Name = $"{ObjectType} Cut {ItemMaterial.ToString()}".Replace("_"," ");
+                break;
+        }
+    }
+
+    public ItemInfo(ItemCategory category, string objectType, Material itemMaterial)
+    {
+        Category = category;
+        ObjectType = objectType;
+        ItemMaterial = itemMaterial;
+        
+        
         switch (Category)
         {
             case ItemCategory.Gem:
