@@ -4,29 +4,17 @@ using UnityEngine.Tilemaps;
 public class TileInteraction : MonoBehaviour
 {
     public Tilemap terrainTilemap;
-    public float moveSpeed = 5f;
     public float digDistance = 2f;
-    private Rigidbody2D rb;
 
     public Vector3Int GridStartPosition;
 
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-
-        float moveX = Input.GetAxis("Horizontal");
-        float moveY = Input.GetAxis("Vertical");
-
-        Vector3 moveDirection = new Vector3(moveX, moveY, 0f);
-        moveDirection = moveDirection.normalized;
-
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
-
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -82,12 +70,5 @@ public class TileInteraction : MonoBehaviour
             }
 
         }
-    }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        rb.velocity = Vector3.zero;
-        Debug.Log("Collision Detected");
     }
 }
