@@ -8,6 +8,9 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public ItemInfo ItemInformation;
     public int InventorySlot;
     public bool IsInInventory;
+    
+
+    public static InventoryItem HoveredItem;
 
     private float lastClickTime = 0f;       // To track the time of the last click
     private const float doubleClickDelay = 0.3f; // Max delay time to detect double-click
@@ -18,6 +21,7 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (IsInInventory)
         {
             InventoryController.SelectItem(InventorySlot);
+            HoveredItem = this;
         }
     }
 
@@ -27,6 +31,7 @@ public class InventoryItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (IsInInventory)
         {
             InventoryController.DeselectItem();
+            HoveredItem = null;
         }
     }
 

@@ -24,7 +24,18 @@ public class sellGem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            sell();
+
+            if (InventoryItem.HoveredItem != null && InventoryItem.HoveredItem.ItemInformation.Category == ItemCategory.Gem) {
+
+                string Mat = InventoryItem.HoveredItem.ItemInformation.ItemMaterial.ToString();
+                string Cut = InventoryItem.HoveredItem.ItemInformation.ObjectType.ToString();
+                print($"{Mat} GemStone : {Cut}");
+                //sell();
+
+            }
+
+
+            
         }
     }
 

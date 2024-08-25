@@ -45,6 +45,8 @@ public class playermovement : MonoBehaviour
         moleSprite = GetComponent<SpriteRenderer>();
         lastSafePosition = transform.position;
         _inventoryController = FindObjectOfType<InventoryController>();
+
+        InteractiveCrafts.ClearFocus();
     }
 
     // Update is called once per frame
