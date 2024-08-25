@@ -35,6 +35,14 @@ public class sellGem : MonoBehaviour
                 priceofGem = gemPrice(Mat, Cut);
                 sell();
             }
+            if (InventoryItem.HoveredItem != null && InventoryItem.HoveredItem.ItemInformation.Category == ItemCategory.Metal)
+            {
+                selectedItem = InventoryItem.HoveredItem; // Store the currently hovered item
+                string Mat = selectedItem.ItemInformation.ItemMaterial.ToString();
+                Debug.Log($"{Mat}");
+                priceofIngot = ingotPrice(Mat);
+                sell();
+            }
         }
     }
 
