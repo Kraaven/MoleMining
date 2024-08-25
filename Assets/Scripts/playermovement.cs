@@ -140,11 +140,11 @@ public class playermovement : MonoBehaviour
             isClimbing = false;  // Stop climbing when exiting the ladder trigger
             gravityScale = 9.8f;  // Restore gravity just in case
         }
-
-        if (other.CompareTag("ITEM"))
-        {
-            GetComponent<invList>().inventoryList.Add(new ItemInfo(other.gameObject.GetComponent<Item>()));
-            Destroy(other.gameObject);
-        }
+        //
+        // if (other.CompareTag("ITEM"))
+        // {
+        //     GetComponent<invList>().inventoryList.Add(new ItemInfo(other.gameObject.GetComponent<Item>()));
+        //     Destroy(other.gameObject);
+        // }
     }
 }
