@@ -27,7 +27,7 @@ public class playermovement : MonoBehaviour
     public Animator anim;
     
     private Vector2 lastSafePosition; // To store the player's last safe position
-    public string triggerTag = "Ground"; // Tag for the trigger zone (e.g., a pitfall)
+    //public string triggerTag = "ground"; // Tag for the trigger zone (e.g., a pitfall)
     
 
     public float climbSpeed = 5f;  // Speed of climbing
@@ -161,11 +161,11 @@ public class playermovement : MonoBehaviour
             isClimbing = true;  // Start climbing when entering the ladder trigger
         }
         // Check if the player enters the trigger zone
-        if (other.CompareTag(triggerTag))
-        {
-            // Move the player back to the last safe position
-            transform.position = lastSafePosition;
-        }
+        // if (other.CompareTag(triggerTag))
+        // {
+        //     // Move the player back to the last safe position
+        //     transform.position = lastSafePosition;
+        // }
     }
 
     private void OnTriggerExit2D(Collider2D other)
