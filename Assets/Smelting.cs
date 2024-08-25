@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,9 +16,19 @@ public class Smelting : MonoBehaviour, InteractiveMenu
     public GameObject Fire2;
     public GameObject Fire3;
 
-    public int Fuel;
+    public int Fuel = 3;
 
     // Method to take an item from the inventory and place it in the polishing station
+
+    private void Start()
+    {
+        Fuel = 0;
+
+        Fire1.SetActive(false);
+        Fire2.SetActive(false);
+        Fire3.SetActive(false);
+    }
+
     public bool TakeItem(int ID)
     {
         if (HoldingItem)
@@ -25,9 +36,11 @@ public class Smelting : MonoBehaviour, InteractiveMenu
             Debug.LogWarning("Already holding an item for polishing.");
             return false;
         }
+        
 
         InventoryItem item = InventoryController.Singleton.SampleItemList[ID].GetComponent<InventoryItem>();
-        if (item != null && item.ItemInformation.Category == ItemCategory.Ore)
+        
+        if (item != null && item.ItemInformation.Category == ItemCategory.Ore && !item.ItemInformation.ObjectType.Equals("Coal") )
         {
             // Remove the item from the inventory and place it in the ItemHolder
             //InventoryController.DeleteItem(ID);
@@ -71,12 +84,31 @@ public class Smelting : MonoBehaviour, InteractiveMenu
 
     public void StartSmelting()
     {
-        SmeltOre(InputItem.ItemInformation.ItemMaterial);
+        Material IngotMat;
+        switch (InputItem.ItemInformation.ObjectType)
+        {
+            case "Gold":
+                IngotMat = Material.Gold;
+                break;
+            case "Silver":
+                IngotMat = Material.Silver;
+                break;
+            case "Platinum":
+                IngotMat = Material.Platinum;
+                break;
+            default:
+                IngotMat = Material.Default;
+                break;
+        }
+        
+        
+        SmeltOre(IngotMat);
     }
 
 
     private void SmeltOre(Material Metal)
     {
+        print($"Smelting {Metal}");
         if (InputItem == null || !HoldingItem)
         {
             Debug.LogWarning("No item to polish.");
@@ -99,5 +131,7 @@ public class Smelting : MonoBehaviour, InteractiveMenu
         
         Destroy(InputItem.gameObject);
         HoldingItem = false;
+        
     }
+    
 }

@@ -74,21 +74,22 @@ public class ResourceManager : MonoBehaviour
     private void Start()
     {
         
-        var IT = new GameObject();
-        IT.transform.position = Vector3.zero;
-        IT.transform.localScale *= 10;
-        IT.layer = LayerMask.NameToLayer("Item");
-        
-        var TT = IT.AddComponent<Item>();
-        Material[] values = (Material[])System.Enum.GetValues(typeof(Material));
-        Material randomMaterial = values[Random.Range(0, values.Length)];
-        TT.Initialize("TEST",randomMaterial,ItemCategory.Crystal,"Crystal1");
+        // var IT = new GameObject();
+        // IT.transform.position = Vector3.zero;
+        // IT.transform.localScale *= 10;
+        // IT.layer = LayerMask.NameToLayer("Item");
+        //
+        // var TT = IT.AddComponent<Item>();
+        // Material[] values = (Material[])System.Enum.GetValues(typeof(Material));
+        // Material randomMaterial = values[Random.Range(0, values.Length)];
+        // TT.Initialize("TEST",randomMaterial,ItemCategory.Crystal,"Crystal1");
         
         
         StartCoroutine(Spawn());
     }
 
 
+    
     IEnumerator Spawn()
     {
         yield return null;
@@ -100,35 +101,25 @@ public class ResourceManager : MonoBehaviour
             IT.transform.localScale *= 10;
             IT.layer = LayerMask.NameToLayer("Item");
             string T = "";
-            switch (Random.Range(0,7))
+            switch (Random.Range(0, 4))
             {
                 case 0:
-                    T = "Octagon";
+                    T = "Silver";
                     break;
                 case 1:
-                    T = "Princess";
+                    T = "Coal";
                     break;
                 case 2:
-                    T = "Brilliant";
+                    T = "Platinum";
                     break;
                 case 3:
-                    T = "Pear";
-                    break;
-                case 4:
-                    T = "Teardrop";
-                    break;
-                case 5:
-                    T = "Round";
-                    break;
-                case 6:
-                    T = "Heart";
+                    T = "Gold";
                     break;
             }
+
             var TT = IT.AddComponent<Item>();
             
-            Material[] values = (Material[])System.Enum.GetValues(typeof(Material));
-            Material randomMaterial = values[Random.Range(0, values.Length)];
-            TT.Initialize("TEST",randomMaterial,ItemCategory.Crystal,$"Crystal{Random.Range(1,5)}");
+            TT.Initialize("TEST",Material.Default,ItemCategory.Ore,T);
             yield return new WaitForSeconds(0.1f);
         }
     }
