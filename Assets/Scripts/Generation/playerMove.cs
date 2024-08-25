@@ -11,6 +11,9 @@ public class TileInteraction : MonoBehaviour
 
     private void Awake()
     {
+        Vector3 pos = GameObject.Find("CaveGrid").transform.position;
+        GridStartPosition = new Vector3Int((int)pos.x,(int)pos.y,(int)pos.z); 
+      
     }
 
     void Update()
@@ -28,8 +31,11 @@ public class TileInteraction : MonoBehaviour
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         worldPoint.z = 0;
         Vector3Int cellPosition = terrainTilemap.WorldToCell(worldPoint);
-        cellPosition -= GridStartPosition;
+        
         Vector3 WorldTilePosition = terrainTilemap.CellToWorld(cellPosition) + new Vector3(0.5f, 0.5f, 0.5f);
+
+        GameObject test = new GameObject();
+        test.transform.position = WorldTilePosition;
 
         float DistanceToTile = Vector3.Distance(WorldTilePosition, transform.position);
 

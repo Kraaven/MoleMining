@@ -106610,7 +106610,7 @@ GameObject:
   - component: {fileID: 522516495}
   - component: {fileID: 522516494}
   m_Layer: 0
-  m_Name: Grid
+  m_Name: CaveGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107122,7 +107122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   terrainTilemap: {fileID: 872995519}
-  digDistance: 2
+  digDistance: 3.5
   GridStartPosition: {x: -83, y: 94, z: 0}
 --- !u!4 &1214740716 stripped
 Transform:
