@@ -13,10 +13,18 @@ public class InventoryController : MonoBehaviour
     public static InventoryController Singleton;
     public RectTransform SlotSelected;
     public InventoryItem SelectedItem;
-    
-    
+
+
     //public Sprite 
 
+
+
+
+
+    private void Awake()
+    {
+        Singleton = this;
+    }
     private void Start()
     {
         // for (int i = 0; i < 20; i++)
@@ -26,7 +34,7 @@ public class InventoryController : MonoBehaviour
         //     print("Inserted New Sample");
         // }
 
-        Singleton = this;
+        
         SlotSelected.GetComponent<Image>().enabled = false;
     }
 

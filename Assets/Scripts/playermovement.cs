@@ -14,7 +14,7 @@ public class playermovement : MonoBehaviour
     private bool isGrounded;
     private Vector2 origin;
     [SerializeField] private float originminus = 0.4f;
-    private InventoryController _inventoryController;
+    public InventoryController _inventoryController;
     
     public float moveSpeed;
 
@@ -44,9 +44,8 @@ public class playermovement : MonoBehaviour
     {
         moleSprite = GetComponent<SpriteRenderer>();
         lastSafePosition = transform.position;
-        _inventoryController = FindObjectOfType<InventoryController>();
 
-        InteractiveCrafts.ClearFocus();
+        
     }
 
     // Update is called once per frame
@@ -194,7 +193,9 @@ void jumpandgravity()
         if (other.TryGetComponent<Item>(out Item IT))
         {
             print(IT.Type);
+            print(_inventoryController);
             var Added =_inventoryController.Insert(new ItemInfo(IT));
+            print(Added);
             if (Added)
             {
                 _inventoryController.SampleItemList.Last().GetComponent<InventoryItem>().IsInInventory = true;

@@ -11,10 +11,19 @@ public class InteractiveCrafts : MonoBehaviour
     public static InteractiveCrafts Singleton;
     public static bool OpenMenu;
 
-    private void Start()
+
+
+    private void Awake()
     {
         Singleton = this;
+    }
+
+    private void Start()
+    {
+        
         Menu = Menus[1].GetComponent<InteractiveMenu>();
+
+        InteractiveCrafts.ClearFocus();
     }
 
 
