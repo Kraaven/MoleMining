@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -5,14 +6,18 @@ using TMPro;
 public class sellGem : MonoBehaviour
 {
     private int bank = 0;
-    private int priceofGem = 200;
+    private int priceofGem;
+    private int priceofIngot;
+
     public GameObject popUp;
     public TextMeshProUGUI currentCash;
     private Dictionary<string, int> gemPrices;
+    private Dictionary<string, int> ingotPrices;
 
     private void Start()
     {
-        InitializeGemPrices(); // Ensure this is called to initialize the dictionary
+        InitializeGemPrices(); // Initialize gem prices
+        InitializeIngotPrices(); // Initialize ingot prices
     }
 
     private void Update()
@@ -25,13 +30,17 @@ public class sellGem : MonoBehaviour
 
     private void sell()
     {
+        // For demonstration, we're setting priceofGem here; you might change it as needed.
         priceofGem = gemPrice("Diamond", "Brilliant");
+        // Set the ingot price as needed for this example
+        priceofIngot = ingotPrice("Gold"); // For example
+
         popUp.SetActive(true);
     }
 
     public void sellYes()
     {
-        bank += priceofGem;
+        bank += priceofIngot; // Use priceofIngot or priceofGem as needed
         currentCash.text = $"cash : {bank}";
         popUp.SetActive(false);
     }
@@ -51,6 +60,19 @@ public class sellGem : MonoBehaviour
         else
         {
             Debug.Log($"{gemName} ({cut}) price not found.");
+            return 0;
+        }
+    }
+
+    int ingotPrice(string ingotName)
+    {
+        if (ingotPrices.TryGetValue(ingotName, out int price))
+        {
+            return price;
+        }
+        else
+        {
+            Debug.Log($"{ingotName} price not found.");
             return 0;
         }
     }
@@ -121,6 +143,16 @@ public class sellGem : MonoBehaviour
             { "Diamond_Teardrop", 500 },
             { "Diamond_Round", 800 },
             { "Diamond_Pearl", 690 }
+        };
+    }
+
+    void InitializeIngotPrices()
+    {
+        ingotPrices = new Dictionary<string, int>
+        {
+            {"Gold", 150},
+            {"Silver", 100},
+            {"Platinum", 200}
         };
     }
 }
