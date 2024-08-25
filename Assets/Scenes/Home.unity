@@ -390,6 +390,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4687379601640550352, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 588163028}
+    - target: {fileID: 4687379601640550352, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: sellYes
+      objectReference: {fileID: 0}
     - target: {fileID: 5659032967467966553, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
       propertyPath: m_SortingOrder
       value: 1
@@ -429,6 +437,14 @@ PrefabInstance:
     - target: {fileID: 8857219198782284538, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 9064871004566167927, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 588163028}
+    - target: {fileID: 9064871004566167927, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: sellNo
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
