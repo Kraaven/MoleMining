@@ -12,7 +12,7 @@ public class InteractiveCrafts : MonoBehaviour
     private void Start()
     {
         Singleton = this;
-        Menu = Menus[0].GetComponent<InteractiveMenu>();
+        Menu = Menus[1].GetComponent<InteractiveMenu>();
     }
     
     

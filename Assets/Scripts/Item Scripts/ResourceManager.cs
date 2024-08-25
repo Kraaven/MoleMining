@@ -94,32 +94,42 @@ public class ResourceManager : MonoBehaviour
     {
         yield return null;
         yield return null;
-        for (int i = 0; i < 10 ;i++)
+        for (int i = 0; i < 50 ;i++)
         {
             var IT = new GameObject();
             IT.transform.Translate(new Vector3(Random.Range(-6f,6f),4,0));
-            IT.transform.localScale *= 10;
+            IT.transform.localScale *= 2;
             IT.layer = LayerMask.NameToLayer("Item");
             string T = "";
-            switch (Random.Range(0, 4))
+            switch (Random.Range(0,7))
             {
                 case 0:
-                    T = "Silver";
+                    T = "Octagon";
                     break;
                 case 1:
-                    T = "Coal";
+                    T = "Princess";
                     break;
                 case 2:
-                    T = "Platinum";
+                    T = "Brilliant";
                     break;
                 case 3:
-                    T = "Gold";
+                    T = "Pear";
+                    break;
+                case 4:
+                    T = "Teardrop";
+                    break;
+                case 5:
+                    T = "Round";
+                    break;
+                case 6:
+                    T = "Heart";
                     break;
             }
-
             var TT = IT.AddComponent<Item>();
             
-            TT.Initialize("TEST",Material.Default,ItemCategory.Ore,T);
+            Material[] values = (Material[])System.Enum.GetValues(typeof(Material));
+            Material randomMaterial = values[Random.Range(0, values.Length)];
+            TT.Initialize("TEST",randomMaterial,ItemCategory.Crystal,$"Crystal{Random.Range(1,5)}");
             yield return new WaitForSeconds(0.1f);
         }
     }

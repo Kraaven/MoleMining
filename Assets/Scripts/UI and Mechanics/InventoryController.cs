@@ -37,7 +37,8 @@ public class InventoryController : MonoBehaviour
             //Item.transform.position = InvetorySlots[NewSlot].position;
             Item.transform.SetParent(InvetorySlots[NewSlot]);
             Item.transform.localPosition = new Vector3(0,0,0);
-            Item.transform.localScale *= 0.006f;
+            //Item.transform.localScale *= 0.006f;
+            Item.transform.localScale *= 0.2f;
         
 
     }

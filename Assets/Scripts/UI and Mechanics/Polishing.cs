@@ -163,7 +163,7 @@ public class Polishing : MonoBehaviour, InteractiveMenu
         IM.GetComponent<InventoryItem>().IsInInventory = false;
         I.transform.SetParent(ResultHolder);
         I.transform.localPosition = Vector3.zero;
-        I.transform.localScale *= 0.006f;
+        I.transform.localScale *= 0.4f;
         
         Destroy(InputItem.gameObject);
         HoldingItem = false;

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ public class playermovement : MonoBehaviour
     private bool isGrounded;
     private Vector2 origin;
     [SerializeField] private float originminus = 0.4f;
+    private InventoryController _inventoryController;
     
     public float moveSpeed;
 
@@ -37,6 +39,7 @@ public class playermovement : MonoBehaviour
     {
         moleSprite = GetComponent<SpriteRenderer>();
         lastSafePosition = transform.position;
+        _inventoryController = FindObjectOfType<InventoryController>();
     }
 
     // Update is called once per frame
@@ -160,12 +163,21 @@ public class playermovement : MonoBehaviour
         {
             isClimbing = true;  // Start climbing when entering the ladder trigger
         }
-        // Check if the player enters the trigger zone
-        // if (other.CompareTag(triggerTag))
-        // {
-        //     // Move the player back to the last safe position
-        //     transform.position = lastSafePosition;
-        // }
+
+        if (other.TryGetComponent<Item>(out Item IT))
+        {
+            print(IT.Type);
+            var Added =_inventoryController.Insert(new ItemInfo(IT));
+            if (Added)
+            {
+                _inventoryController.SampleItemList.Last().GetComponent<InventoryItem>().IsInInventory = true;
+                Destroy(IT.gameObject);
+            }
+            else
+            {
+                print("Item Not Picked Up");
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)

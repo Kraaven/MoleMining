@@ -49,7 +49,7 @@ public class ClickDetector : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             toggle = !toggle;
             UI.SetActive(toggle);

@@ -15,6 +15,7 @@ public class pauseScript : MonoBehaviour
         {
             if (isPaused)
             {
+                print("escape is pressed");
                 Resume();
             }
             else

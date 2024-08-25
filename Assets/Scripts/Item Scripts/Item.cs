@@ -19,8 +19,10 @@
         {
             gameObject.AddComponent<GravityComponent>(); 
             gameObject.AddComponent<CircleCollider2D>().radius = 0.08f;
-            
-   
+            gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
+            gameObject.AddComponent<Rigidbody2D>().isKinematic = true;
+
+
 
         }
 
