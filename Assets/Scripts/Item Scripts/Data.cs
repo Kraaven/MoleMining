@@ -25,6 +25,8 @@ public class Materials
                 return FromHex("e8b923");
             case Material.Silver:
                 return FromHex("c2c4ce");
+            case Material.Platinum:
+                return FromHex("E5E4E2");
             case Material.Amethyst:
                 return FromHex("de7dbe");
             case Material.Pink_Tormaline:
@@ -43,7 +45,7 @@ public class Materials
             
             default:
                 Debug.Log("Default Color");
-                return new Color(0, 0, 0);
+                return Color.white;
         }
     }
     
@@ -84,7 +86,8 @@ public enum Material
     Amber,
     Diamond,
     Blue_Sapphire,
-    Pink_Tormaline
+    Pink_Tormaline,
+    Default
 }
 
 [Serializable]

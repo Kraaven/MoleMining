@@ -73,29 +73,6 @@ public class ResourceManager : MonoBehaviour
 
     private void Start()
     {
-        // for (int i = -2; i < 3; i++)
-        // {
-        //     var IT = new GameObject();
-        //     IT.transform.Translate(new Vector3(i*2,4,0));
-        //     IT.transform.localScale *= 10;
-        //     IT.layer = LayerMask.NameToLayer("Item");
-        //     string T = "";
-        //     switch (Random.Range(0,3))
-        //     {
-        //         case 0:
-        //             T = "REC";
-        //             break;
-        //         case 1:
-        //             T = "ROMB";
-        //             break;
-        //         case 2:
-        //             T = "DIA";
-        //             break;
-        //     }
-        //     var TT = IT.AddComponent<Item>();
-        //     TT.Initialize("TEST",new Color(Random.Range(0,1f),Random.Range(0,1f),Random.Range(0,1f)),ItemCategory.Gem,"",T);
-        //     
-        // }
         
         var IT = new GameObject();
         IT.transform.position = Vector3.zero;
@@ -151,7 +128,7 @@ public class ResourceManager : MonoBehaviour
             
             Material[] values = (Material[])System.Enum.GetValues(typeof(Material));
             Material randomMaterial = values[Random.Range(0, values.Length)];
-            TT.Initialize("TEST",randomMaterial,ItemCategory.Crystal,"Crystal1");
+            TT.Initialize("TEST",randomMaterial,ItemCategory.Crystal,$"Crystal{Random.Range(1,5)}");
             yield return new WaitForSeconds(0.1f);
         }
     }
