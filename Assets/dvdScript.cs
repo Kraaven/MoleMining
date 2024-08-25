@@ -14,6 +14,7 @@ public class dvdScript : MonoBehaviour
     {
         // Start the logo moving in a random direction
         direction = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
+        transform.position = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
 
     void Update()

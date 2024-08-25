@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class mainmenuScript : MonoBehaviour
 {
+    public GameObject mainMenu;
+
+    public GameObject aboutMenu;
 // This method loads the game scene, replace "GameScene" with your actual scene name
     public void PlayGame()
     {
@@ -12,10 +15,11 @@ public class mainmenuScript : MonoBehaviour
     }
 
     // This method can be expanded to open a settings menu
-    public void OpenSettings()
+    public void About()
     {
         // Code to open the settings menu
-        Debug.Log("Settings button pressed");
+        aboutMenu.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     // This method quits the game
@@ -23,6 +27,12 @@ public class mainmenuScript : MonoBehaviour
     {
         Debug.Log("Quit button pressed");
         Application.Quit();
+    }
+
+    public void Back()
+    {
+        aboutMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
 }
