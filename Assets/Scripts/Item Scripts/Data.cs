@@ -110,6 +110,15 @@ public class ItemInfo
             case ItemCategory.Gem:
                 Name = $"{ObjectType} Cut {ItemMaterial.ToString()}".Replace("_"," ");
                 break;
+            case ItemCategory.Ore:
+                Name =$"Raw {ObjectType} Ore".Replace("_"," ") ;
+                break;
+            case ItemCategory.Crystal:
+                Name = $"{ItemMaterial.ToString()} Crystal Shard".Replace("_", " ");
+                break;
+            case ItemCategory.Metal:
+                Name = $"{ItemMaterial.ToString()} Ingot".Replace("_", " ");
+                break;
         }
     }
 
@@ -118,12 +127,21 @@ public class ItemInfo
         Category = category;
         ObjectType = objectType;
         ItemMaterial = itemMaterial;
-        
-        
+
+
         switch (Category)
         {
             case ItemCategory.Gem:
-                Name = $"{ObjectType} Cut {ItemMaterial.ToString()}".Replace("_"," ");
+                Name = $"{ObjectType} Cut {ItemMaterial.ToString()}".Replace("_", " ");
+                break;
+            case ItemCategory.Ore:
+                Name = $"Raw {ObjectType} Ore".Replace("_", " ");
+                break;
+            case ItemCategory.Crystal:
+                Name = $"{ItemMaterial.ToString()} Crystal Shard".Replace("_", " ");
+                break;
+            case ItemCategory.Metal:
+                Name = $"{ItemMaterial.ToString()} Ingot".Replace("_", " ");
                 break;
         }
     }
