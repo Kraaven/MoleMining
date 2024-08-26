@@ -86,6 +86,11 @@ public class playermovement : MonoBehaviour
         {
             lastSafePosition = transform.position;
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameObject.transform.position = new Vector3(-90.02f, 94, 0);
+        }
     }
     
     void Flip()
