@@ -296,7 +296,7 @@ PrefabInstance:
     - target: {fileID: 4687379601640550352, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1117082804}
     - target: {fileID: 4687379601640550352, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: sellYes
@@ -344,7 +344,7 @@ PrefabInstance:
     - target: {fileID: 9064871004566167927, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1117082804}
     - target: {fileID: 9064871004566167927, guid: e02214a9eb715e54ab7d9090c74e7e00, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: sellNo
@@ -1093,6 +1093,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1117082804 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6756555043446158796, guid: d681b79726bfc324baf2684040e48cff, type: 3}
+  m_PrefabInstance: {fileID: 6399873083855128984}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c55513e94412045a4704f47abd0b92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1225518970
