@@ -55,7 +55,8 @@ public class sellGem : MonoBehaviour
     {
         if (selectedItem != null && selectedItem.InventorySlot != null)
         {
-            bank += priceofGem; // Use priceofIngot or priceofGem as needed
+            bank += priceofGem;
+            bank += priceofIngot;// Use priceofIngot or priceofGem as needed
             InventoryController.DeleteItem(selectedItem.InventorySlot);
             currentCash.text = $"Cash: {bank}";
             popUp.SetActive(false);
